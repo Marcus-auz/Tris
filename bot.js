@@ -25,7 +25,8 @@ client.on('ready',()=>{
     client.on('message',(receivedMessage)=>{
         if(receivedMessage.author==client.user) return //this condition is set so that bot dont keep replying its own messages and enter a infinte loop 
         else {
-            receivedMessage.channel.send("Message received: "+receivedMessage.content)
+            //it tags the user who sent the msg and echo the msg back
+            receivedMessage.channel.send("Message received," + receivedMessage.author.toString() + ":  " + receivedMessage.content)
         }
     })
 })
