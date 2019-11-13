@@ -27,6 +27,21 @@ client.on('ready',()=>{
         else {
             //it tags the user who sent the msg and echo the msg back
             receivedMessage.channel.send("Message received," + receivedMessage.author.toString() + ":  " + receivedMessage.content)
+            
+            //adding a reaction to a message
+            receivedMessage.react("😁") //emoji reaction to the msg
+
+            //reacting with a custom emoji {you need to first add custom emoji into the server}
+            //react with each custom emoji
+            receivedMessage.guild.emojis.forEach(customEmoji=>{
+                console.log(`${customEmoji.name} ${customEmoji.id}`)
+                receivedMessage.react(customEmoji)
+            })
+
+            //to react with some specefic emoji
+            let customEmoji=receivedMessage.guild.emojis.get("emoji id")
+            receivedMessage.react(customEmoji)
+        
         }
     })
 })
