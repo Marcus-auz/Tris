@@ -21,7 +21,13 @@ client.on('ready',()=>{
     const attachment=new Discord.Attachment("https://images.search.yahoo.com/yhs/search?p=devwloper+image&fr=yhs-ddc-linuxmint&hspart=ddc&hsimp=yhs-linuxmint&imgurl=https%3A%2F%2Fmadebysidecar.com%2Fassets%2Fproducts%2Fthumbs%2Fdeveloper-photo-bundle-4.jpg#id=14&iurl=https%3A%2F%2Fmadebysidecar.com%2Fassets%2Fproducts%2Fthumbs%2Fdeveloper-photo-bundle-4.jpg&action=click")
     generalChannel.send(attachment) //if attachment passed it send attach ,u can send message too
 
-    
+
+    client.on('message',(receivedMessage)=>{
+        if(receivedMessage.author==client.user) return //this condition is set so that bot dont keep replying its own messages and enter a infinte loop 
+        else {
+            receivedMessage.channel.send("Message received: "+receivedMessage.content)
+        }
+    })
 })
 
 client.login("NjQ0MjcxNTczNjUzNTIwMzk3.XcxnSQ.8SyQ0N_FbApweS2M74JZnGG11ao");
