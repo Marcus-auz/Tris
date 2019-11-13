@@ -59,7 +59,23 @@ function processCommand(receivedMessage){
 
     if(primaryCommand=="help"){
         helpCommand(arguments,receivedMessage)
+    }else if(primaryCommand=="multiply"){
+        multiplyCommand(arguments,receivedMessage)
+    }else {
+        receivedMessage.channel.send("Unkown command,try `!help` or `!multiply`")
     }
+
+}
+function multiplyCommand(arguments,receivedMessage){
+    if(arguments.length<2){
+        receivedMessage.channel.send("not enough arguments")
+        return
+    }
+    let product =1;
+    arguments.forEach((value)=>{
+        product=product*parseFloat(value)
+    })
+    receivedMessage.channel.send("the product of"+arguments+"is "+ product.toString())
 }
 
 function helpCommand(arguments,receivedMessage){
